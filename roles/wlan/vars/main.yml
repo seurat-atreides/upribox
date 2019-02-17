@@ -21,10 +21,19 @@ default_settings:
       passwd: MyRaspberryP1T0r!
 
     general:
-      channel: 9
-      hw_mode: g
+      channel: 36
+      hw_mode: a
       ieee80211n: 1
+      require_ht: 1
+      ieee80211ac: 1
+      require_vht: 1
+      ieee80211d: 1
+      ieee80211h: 0      
       wmm_enabled: 1
+      vht_oper_chwidth: 1
+      vht_oper_centr_freq_seg0_idx: 42
+      ht_capab: '[HT40+][SHORT-GI-20][SHORT-GI-40][DSSS_CK-40][MAX-AMSDU-3839]'
+      vht_capab: '[MAX-MPDU-3895][SHORT-GI-80][SU-BEAMFORMEE]'      
 
 magic_mac_prefix: '02'
 magic_mac_postfix: '30'

@@ -1,13 +1,21 @@
 interface=wlan0
 bssid={{ ansible_wlan0.macaddress | regex_replace('^..', magic_mac_prefix) | regex_replace('..$', magic_mac_postfix) }}
-hw_mode={{ default_settings.wlan.general.hw_mode if not (ansible_local is defined and ansible_local.wlan is defined and ansible_local.wlan.general is defined) else ansible_local.wlan.general.hw_mode| default(default_settings.wlan.general.hw_mode) }}
-channel={{ default_settings.wlan.general.channel if not (ansible_local is defined and ansible_local.wlan is defined and ansible_local.wlan.general is defined) else ansible_local.wlan.general.channel | default(default_settings.wlan.general.channel) }}
-ieee80211n={{ default_settings.wlan.general.ieee80211n if not (ansible_local is defined and ansible_local.wlan is defined and ansible_local.wlan.general is defined) else ansible_local.wlan.general.ieee80211n| default(default_settings.wlan.general.ieee80211n) }}
-driver=nl80211
-wmm_enabled={{ default_settings.wlan.general.wmm_enabled if not (ansible_local is defined and ansible_local.wlan is defined and ansible_local.wlan.general is defined) else ansible_local.wlan.general.wmm_enabled | default(default_settings.wlan.general.wmm_enabled) }}
+channel=36
+hw_mode=a
+ieee80211n=1
+require_ht=1
+ieee80211ac=1
+require_vht=1
+ieee80211d=1
+ieee80211h=0
+ht_capab=[HT40+][SHORT-GI-20][SHORT-GI-40][DSSS_CK-40][MAX-AMSDU-3839]
+vht_capab=[MAX-MPDU-3895][SHORT-GI-80][SU-BEAMFORMEE]
+vht_oper_chwidth=1
+vht_oper_centr_freq_seg0_idx=42
 
 #ssid
 ssid={{ default_settings.wlan.upri.ssid if not (ansible_local is defined and ansible_local.wlan is defined and ansible_local.wlan.upri is defined) else ansible_local.wlan.upri.ssid | default(default_settings.wlan.upri.ssid) }}
+country_code=US
 auth_algs=1
 wpa=2
 macaddr_acl=0
